@@ -21,21 +21,13 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
-    void ConnectToServer(QString IP, int Port, QString UserName, QString PassWord);
-
-    bool isFolderEmpty(const QString &folderPath);
-
     QString getFolderName(const QString &folderPath);
-
-    QStringList datetimeRangeFilter(const QString &filename, const QDateTime &startDateTime, const QDateTime &endDateTime);
 
     QStringList traverseDirectory(const QString &directoryPath);
 
     QStringList findFilesWithDatetimeRange(const QString &folderPath, const QDateTime &startDateTime, const QDateTime &endDateTime);
 
     void downloadFile(QString remotePath, QString localPath, QString makdirPath);
-
-    //    void zipFolder(QString source_dir, QString output_file);
 
     // 参数1:源文件夹 例：D:/develop/Projects/pycharmProject/copyLog/TT
     // 参数2：打包后文件夹，例 D:/develop/Projects/pycharmProject/copyLog/TT.zip
@@ -44,7 +36,8 @@ public:
     void addFileToZip(QZipWriter &zipWriter, const QString &filePath, const QString &zipPath);
 
     void addDirToZip(QZipWriter &zipWriter, const QString &dirPath, const QString &zipPath);
-
+signals:
+    void FileNums(int countFiles);
 private slots:
     // 更改IP
     void on_ledIP_editingFinished();
@@ -70,9 +63,10 @@ private:
     QString m_strUserName;
     QString m_strPassWord;
     int m_nPort;
-    QString m_strSource_pathDefault = "C:/App_Data/Log";
-    QString m_strSource_path = "C:/App_Data/Log";
+    QString m_strRemoteSource_pathDefault = "C:/App_Data/Log";   //远程共享文件路径
+    QString m_strSource_path;
     QString m_strDestination_path;
     QProcess process;
+    int m_nTotalFile;
 };
 #endif // MAINWINDOW_H
