@@ -25,6 +25,38 @@ MainWindow::MainWindow(QWidget* parent)
             ui->progressBar->show();
         }
     });
+
+    QString strLineEditStyle = "QLineEdit {background-color: white;border-radius: 6px;padding: 2px;}";
+    ui->ledIP->setStyleSheet(strLineEditStyle);
+    ui->ledPassword->setStyleSheet(strLineEditStyle);
+    ui->ledPort->setStyleSheet(strLineEditStyle);
+    ui->ledSavePath->setStyleSheet(strLineEditStyle);
+    ui->ledUserName->setStyleSheet(strLineEditStyle);
+
+    QString btnStyle = "QPushButton{"
+                       "background-repeat: no-repeat;"
+                       "background-origin: padding;"
+                       //                       "background-position: left;"
+                       "padding:1px;"
+                       "color:rgb(0, 0, 0);"
+                       "text-align:center;"
+                       "border-style:outset;"
+                       "border-width:0.5px;"
+                       "border-color:rgb(10,45,110);"
+                       //                       "font: bold italic 15px \"Microsoft YaHei\";"
+                       "}"
+                       "QPushButton::hover{"
+                       "background-color:rgb(0,128,128);"
+                       "}"
+                       "QPushButton:pressed{"
+                       "background-color:rgb(50,205,50);"
+                       "padding-left:8px;"
+                       "padding-top:8px;"
+                       "}";
+    ui->btnCopy->setStyleSheet(btnStyle);
+    ui->btnConnect->setStyleSheet(btnStyle);
+    ui->btnSave->setStyleSheet(btnStyle);
+    ui->btnSelectPath->setStyleSheet(btnStyle);
 }
 
 MainWindow::~MainWindow()
